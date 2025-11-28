@@ -7,6 +7,8 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.Unsafe
 import kotlinx.html.consumers.onFinalize
 import web.events.Event
+import web.events.EventType
+import web.events.addEventListener
 import web.dom.Document
 import web.dom.Element
 import web.dom.Node
@@ -15,23 +17,18 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-// JS interop helper for adding event listeners
-@Suppress("UNUSED_PARAMETER")
-private fun addEventListenerJs(element: Element, eventName: String, callback: (Event) -> Unit): Unit =
-    js("element.addEventListener(eventName, callback)")
-
-// JS interop helpers for innerHTML
+// wasmJs requires JS interop functions for innerHTML access
 @Suppress("UNUSED_PARAMETER")
 private fun setInnerHtml(element: HTMLElement, html: String): Unit =
     js("element.innerHTML = html")
 
 @Suppress("UNUSED_PARAMETER")
-private fun getInnerHtml(element: HTMLElement): String =
-    js("element.innerHTML")
+private fun insertAdjacentHtml(element: Element, position: String, html: String): Unit =
+    js("element.insertAdjacentHTML(position, html)")
 
 private fun Element.setEvent(name: String, callback: (Event) -> Unit) {
     val eventName = name.removePrefix("on")
-    addEventListenerJs(this, eventName, callback)
+    addEventListener(EventType(eventName), callback)
 }
 
 class JSDOMBuilder<out R : Element>(val document: Document) : TagConsumer<R> {
@@ -101,7 +98,7 @@ class JSDOMBuilder<out R : Element>(val document: Document) : TagConsumer<R> {
             throw IllegalStateException("No current DOM node")
         }
 
-        // stupid hack as browsers doesn't support createEntityReference
+        // Use a temporary element to let the browser decode HTML entities
         val s = document.createElement("span") as HTMLElement
         setInnerHtml(s, entity.text)
         val childNodes = s.childNodes
@@ -117,10 +114,8 @@ class JSDOMBuilder<out R : Element>(val document: Document) : TagConsumer<R> {
     override fun onTagContentUnsafe(block: Unsafe.() -> Unit) {
         with(DefaultUnsafe()) {
             block()
-
-            val current = path.last() as HTMLElement
-            val existingHtml = getInnerHtml(current)
-            setInnerHtml(current, existingHtml + toString())
+            // insertAdjacentHTML is the proper API for injecting raw HTML
+            insertAdjacentHtml(path.last(), "beforeend", toString())
         }
     }
 
