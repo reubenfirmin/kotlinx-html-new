@@ -7,7 +7,7 @@ package kotlinx.html.js
 import kotlin.Unit
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.CommonEventsGroupFacade
-import kotlinx.html.org.w3c.dom.events.Event
+import web.events.Event
 
 public var CommonAttributeGroupFacade.onAbortFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onAbort")

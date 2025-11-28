@@ -4,9 +4,9 @@ import kotlinx.html.LEGEND
 import kotlinx.html.OBJECT
 import kotlinx.html.TagConsumer
 import kotlinx.html.VAR
-import org.w3c.dom.Element
-import org.w3c.dom.HTMLElement
-import org.w3c.dom.HTMLLegendElement
+import web.dom.Element
+import web.html.HTMLElement
+import web.html.HTMLLegendElement
 
 @Deprecated("Use legend instead", ReplaceWith("legend(classes, block)"))
 inline fun TagConsumer<HTMLElement>.legEnd(

@@ -241,7 +241,7 @@ private fun generateTagTests(repository: Repository, filePath: String, defaultTa
         emptyLine()
 
         writeKotlinPoet {
-            addImport("kotlinx.browser", "document")
+            addImport("web.dom", "document")
             addImport("kotlinx.html.dom", "append")
             addType(
                 TypeSpec

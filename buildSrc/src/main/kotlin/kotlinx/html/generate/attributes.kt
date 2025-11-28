@@ -56,7 +56,7 @@ fun Appendable.facade(repository: Repository, facade: AttributeFacade) {
 }
 
 fun Appendable.eventProperty(parent: String, attribute: AttributeInfo, shouldUnsafeCast: Boolean) {
-    val type = "(org.w3c.dom.events.Event) -> Unit"
+    val type = "(web.events.Event) -> Unit"
     variable(
         receiver = parent,
         variable = Var(
@@ -92,7 +92,7 @@ fun Appendable.eventProperty(parent: String, attribute: AttributeInfo, shouldUns
 fun eventProperty(parent: TypeName, attribute: AttributeInfo, shouldUnsafeCast: Boolean): PropertySpec {
     val propertyType = LambdaTypeName.get(
         returnType = ClassName("kotlin", "Unit"),
-        parameters = listOf(ParameterSpec.unnamed(ClassName("kotlinx.html.org.w3c.dom.events", "Event"))),
+        parameters = listOf(ParameterSpec.unnamed(ClassName("web.events", "Event"))),
     )
     return PropertySpec.builder(attribute.fieldName + "Function", propertyType)
         .mutable()

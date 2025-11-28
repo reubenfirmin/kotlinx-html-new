@@ -4,8 +4,8 @@ import kotlinx.html.*
 import kotlinx.html.dom.*
 import kotlinx.html.injector.*
 import kotlinx.html.js.*
-import org.w3c.dom.*
-import kotlinx.browser.*
+import web.html.*
+import web.dom.document
 import kotlin.properties.*
 import kotlin.test.*
 

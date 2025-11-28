@@ -1,7 +1,8 @@
 package kotlinx.html.js
 
 import kotlinx.html.*
-import org.w3c.dom.*
+import web.html.HTMLElement
+import web.html.HTMLLegendElement
 
 @Deprecated("Use legend instead", ReplaceWith("legend(classes, block)"))
 inline fun TagConsumer<HTMLElement>.legEnd(classes : String? = null, crossinline block : LEGEND.() -> Unit = {}) : HTMLLegendElement = legend(classes, block)

@@ -2,16 +2,21 @@ package kotlinx.html.injector
 
 import kotlinx.html.*
 import kotlinx.html.dom.*
-import org.w3c.dom.*
+import web.html.HTMLElement
 import kotlin.reflect.*
+
+private fun classListToList(element: HTMLElement): List<String> {
+    val classList = element.classList
+    return (0 until classList.length).map { classList.item(it)?.toString() ?: "" }
+}
 
 fun <F : Any, T : Any> F.injectTo(bean: T, field: KMutableProperty1<T, in F>) {
     field.set(bean, this)
 }
 
-@Suppress("UnsafeCastFromDynamic")
+@Suppress("UNCHECKED_CAST")
 private fun <F : Any, T : Any> F.injectToUnsafe(bean: T, field: KMutableProperty1<T, out F>) {
-    injectTo(bean, field.asDynamic())
+    injectTo(bean, field as KMutableProperty1<T, in F>)
 }
 
 interface InjectCapture
@@ -48,7 +53,7 @@ class InjectorConsumer<out T : Any>(
         val node = downstream.finalize()
 
         if (classesMap.isNotEmpty()) {
-            node.classList.asList().flatMap { classesMap[it] ?: emptyList() }.forEach { field ->
+            classListToList(node).flatMap { classesMap[it] ?: emptyList() }.forEach { field ->
                 node.injectToUnsafe(bean, field)
             }
         }

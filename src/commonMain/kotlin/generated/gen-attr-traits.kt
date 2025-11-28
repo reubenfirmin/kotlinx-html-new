@@ -22,7 +22,7 @@ var ButtonServerAttributeGroupFacade.validationGroup : String
     set(newValue) {attributeStringString[this, "ValidationGroup"] = newValue}
 
 
-interface CommonAttributeGroupFacade : CoreServerAttributeGroupFacade, CoreAttributeGroupFacade, CommonEventsGroupFacade {
+interface CommonAttributeGroupFacade : CoreServerAttributeGroupFacade, CommonEventsGroupFacade, CoreAttributeGroupFacade {
 }
 
 interface CommonEventsGroupFacade : Tag {
