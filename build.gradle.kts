@@ -176,13 +176,15 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-js:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
             }
         }
 
         val wasmJsMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-js:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
             }
         }
     }
