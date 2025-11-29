@@ -8,6 +8,7 @@ import kotlinx.html.Unsafe
 import kotlinx.html.consumers.onFinalize
 import web.events.Event
 import web.events.EventType
+import web.events.addEventListener
 import web.dom.Document
 import web.dom.Element
 import web.dom.Node
@@ -18,28 +19,19 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 import kotlin.reflect.KProperty
 
-// JS interop helper for adding event listeners
-@Suppress("UNUSED_PARAMETER")
-private fun addEventListenerJs(element: HTMLElement, eventName: String, callback: (Event) -> Unit): Unit =
-    js("element.addEventListener(eventName, callback)")
-
-// JS interop helpers for innerHTML
-@Suppress("UNUSED_PARAMETER")
-private fun setInnerHtmlJs(element: HTMLElement, html: String): Unit =
-    js("element.innerHTML = html")
-
-@Suppress("UNUSED_PARAMETER")
-private fun getInnerHtmlJs(element: HTMLElement): String =
-    js("element.innerHTML")
-
 private fun HTMLElement.setEvent(name: String, callback: (Event) -> Unit) {
     val eventName = name.removePrefix("on")
-    addEventListenerJs(this, eventName, callback)
+    addEventListener(EventType(eventName), callback)
 }
 
 class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R> {
     private val path = arrayListOf<HTMLElement>()
     private var lastLeaved: HTMLElement? = null
+
+    /**
+     * Returns the current element being built, or null if not inside a tag.
+     */
+    fun currentElement(): HTMLElement? = path.lastOrNull()
 
     override fun onTagStart(tag: Tag) {
         val element: HTMLElement = when {
@@ -101,9 +93,9 @@ class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R>
             throw IllegalStateException("No current DOM node")
         }
 
-        // stupid hack as browsers doesn't support createEntityReference
+        // Use a temporary element to let the browser decode HTML entities
         val s = document.createElement("span") as HTMLElement
-        setInnerHtmlJs(s, entity.text)
+        s.asDynamic().innerHTML = entity.text
         val childNodes = s.childNodes
         for (i in 0 until childNodes.length) {
             val node = childNodes[i]
@@ -117,10 +109,8 @@ class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R>
     override fun onTagContentUnsafe(block: Unsafe.() -> Unit) {
         with(DefaultUnsafe()) {
             block()
-
-            val current = path.last()
-            val existingHtml = getInnerHtmlJs(current)
-            setInnerHtmlJs(current, existingHtml + toString())
+            // insertAdjacentHTML is the proper API for injecting raw HTML
+            path.last().asDynamic().insertAdjacentHTML("beforeend", toString())
         }
     }
 
