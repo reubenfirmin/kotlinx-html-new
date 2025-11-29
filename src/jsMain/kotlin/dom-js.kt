@@ -6,24 +6,32 @@ import kotlinx.html.Tag
 import kotlinx.html.TagConsumer
 import kotlinx.html.Unsafe
 import kotlinx.html.consumers.onFinalize
-import kotlinx.html.org.w3c.dom.events.Event
-import org.w3c.dom.Document
-import org.w3c.dom.Element
-import org.w3c.dom.HTMLElement
-import org.w3c.dom.Node
-import org.w3c.dom.asList
+import web.events.Event
+import web.events.EventType
+import web.events.addEventListener
+import web.dom.Document
+import web.dom.Element
+import web.dom.Node
+import web.dom.ParentNode
+import web.html.HTMLElement
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 import kotlin.reflect.KProperty
 
-private inline fun HTMLElement.setEvent(name: String, noinline callback : (Event) -> Unit) {
-    asDynamic()[name] = callback
+private fun HTMLElement.setEvent(name: String, callback: (Event) -> Unit) {
+    val eventName = name.removePrefix("on")
+    addEventListener(EventType(eventName), callback)
 }
 
-class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R> {
+class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R> {
     private val path = arrayListOf<HTMLElement>()
-    private var lastLeaved : HTMLElement? = null
+    private var lastLeaved: HTMLElement? = null
+
+    /**
+     * Returns the current element being built, or null if not inside a tag.
+     */
+    fun currentElement(): HTMLElement? = path.lastOrNull()
 
     override fun onTagStart(tag: Tag) {
         val element: HTMLElement = when {
@@ -85,20 +93,24 @@ class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R
             throw IllegalStateException("No current DOM node")
         }
 
-        // stupid hack as browsers doesn't support createEntityReference
+        // Use a temporary element to let the browser decode HTML entities
         val s = document.createElement("span") as HTMLElement
-        s.innerHTML = entity.text
-        path.last().appendChild(s.childNodes.asList().filter { it.nodeType == Node.TEXT_NODE }.first())
-
-        // other solution would be
-//        pathLast().innerHTML += entity.text
+        s.asDynamic().innerHTML = entity.text
+        val childNodes = s.childNodes
+        for (i in 0 until childNodes.length) {
+            val node = childNodes[i]
+            if (node.nodeType == Node.TEXT_NODE) {
+                path.last().appendChild(node)
+                break
+            }
+        }
     }
 
     override fun onTagContentUnsafe(block: Unsafe.() -> Unit) {
         with(DefaultUnsafe()) {
             block()
-
-            path.last().innerHTML += toString()
+            // insertAdjacentHTML is the proper API for injecting raw HTML
+            path.last().asDynamic().insertAdjacentHTML("beforeend", toString())
         }
     }
 
@@ -111,16 +123,15 @@ class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R
         path.last().appendChild(document.createComment(content.toString()))
     }
 
-    override fun finalize(): R = lastLeaved?.asR() ?: throw IllegalStateException("We can't finalize as there was no tags")
-
     @Suppress("UnsafeCastFromDynamic")
     private fun HTMLElement.asR(): R = this.asDynamic()
 
+    override fun finalize(): R = lastLeaved?.asR() ?: throw IllegalStateException("We can't finalize as there was no tags")
 }
 
 
- fun Document.createTree() : TagConsumer<HTMLElement> = JSDOMBuilder(this)
- val Document.create : TagConsumer<HTMLElement>
+fun Document.createTree(): TagConsumer<HTMLElement> = JSDOMBuilder(this)
+val Document.create: TagConsumer<HTMLElement>
     get() = JSDOMBuilder(this)
 
 @OptIn(ExperimentalContracts::class)
@@ -200,9 +211,9 @@ value class DocumentGettingElementById(val document: Document) {
      */
     inline operator fun <reified T : Element> getValue(x: Any?, kProperty: KProperty<*>): T {
         val id = kProperty.name
-        val element = document.getElementById(id) ?: throw NullPointerException("Element $id is not found")
+        val element = document.getElementById(web.dom.ElementId(id)) ?: throw NullPointerException("Element $id is not found")
         return element as? T ?: throw ClassCastException(
-                "Element $id has type ${element::class.simpleName} which does not implement ${T::class.simpleName}"
+            "Element $id has type ${element::class.simpleName} which does not implement ${T::class.simpleName}"
         )
     }
 }

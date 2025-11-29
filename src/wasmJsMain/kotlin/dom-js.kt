@@ -6,22 +6,32 @@ import kotlinx.html.Tag
 import kotlinx.html.TagConsumer
 import kotlinx.html.Unsafe
 import kotlinx.html.consumers.onFinalize
-import kotlinx.html.org.w3c.dom.events.Event
-import org.w3c.dom.Document
-import org.w3c.dom.Element
-import org.w3c.dom.HTMLElement
-import org.w3c.dom.Node
-import org.w3c.dom.asList
+import web.events.Event
+import web.events.EventType
+import web.events.addEventListener
+import web.dom.Document
+import web.dom.Element
+import web.dom.Node
+import web.html.HTMLElement
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-private inline fun Element.setEvent(name: String, noinline callback: (Event) -> Unit) {
+// wasmJs requires JS interop functions for innerHTML access
+@Suppress("UNUSED_PARAMETER")
+private fun setInnerHtml(element: HTMLElement, html: String): Unit =
+    js("element.innerHTML = html")
+
+@Suppress("UNUSED_PARAMETER")
+private fun insertAdjacentHtml(element: Element, position: String, html: String): Unit =
+    js("element.insertAdjacentHTML(position, html)")
+
+private fun Element.setEvent(name: String, callback: (Event) -> Unit) {
     val eventName = name.removePrefix("on")
-    addEventListener(eventName, callback)
+    addEventListener(EventType(eventName), callback)
 }
 
-class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R> {
+class JSDOMBuilder<out R : Element>(val document: Document) : TagConsumer<R> {
     private val path = arrayListOf<Element>()
     private var lastLeaved: Element? = null
 
@@ -88,20 +98,24 @@ class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R>
             throw IllegalStateException("No current DOM node")
         }
 
-        // stupid hack as browsers doesn't support createEntityReference
+        // Use a temporary element to let the browser decode HTML entities
         val s = document.createElement("span") as HTMLElement
-        s.innerHTML = entity.text
-        path.last().appendChild(s.childNodes.asList().filter { it.nodeType == Node.TEXT_NODE }.first())
-
-        // other solution would be
-//        pathLast().innerHTML += entity.text
+        setInnerHtml(s, entity.text)
+        val childNodes = s.childNodes
+        for (i in 0 until childNodes.length) {
+            val node = childNodes[i]
+            if (node.nodeType == Node.TEXT_NODE) {
+                path.last().appendChild(node)
+                break
+            }
+        }
     }
 
     override fun onTagContentUnsafe(block: Unsafe.() -> Unit) {
         with(DefaultUnsafe()) {
             block()
-
-            path.last().innerHTML += toString()
+            // insertAdjacentHTML is the proper API for injecting raw HTML
+            insertAdjacentHtml(path.last(), "beforeend", toString())
         }
     }
 
@@ -114,16 +128,10 @@ class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R>
         path.last().appendChild(document.createComment(content.toString()))
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun finalize(): R =
-        lastLeaved?.asR() ?: throw IllegalStateException("We can't finalize as there was no tags")
-
-    private inline fun Element.asR(): R {
-        return jsCast(this)
-    }
-
+        lastLeaved as? R ?: throw IllegalStateException("We can't finalize as there was no tags")
 }
-
-fun <T : JsAny> jsCast(any: JsAny): T = js("(any)")
 
 fun Document.createTree(): TagConsumer<Element> = JSDOMBuilder(this)
 val Document.create: TagConsumer<Element>

@@ -3,7 +3,8 @@ package kotlinx.html.tests.unsafes
 import kotlinx.html.*
 import kotlinx.html.dom.*
 import kotlinx.html.stream.*
-import kotlinx.browser.*
+import web.dom.document
+import web.html.HTMLElement
 import kotlin.test.*
 
 class UnsafeContentTest {
@@ -28,8 +29,8 @@ class UnsafeContentTest {
             }
         }
 
-        assertEquals("<p>para</p>", tree.innerHTML)
-        assertEquals("<div><p>para</p></div>", tree.outerHTML)
+        assertEquals("<p>para</p>", tree.innerHTML.toString())
+        assertEquals("<div><p>para</p></div>", tree.outerHTML.toString())
     }
 
     @Test
@@ -44,6 +45,6 @@ class UnsafeContentTest {
             }
         }
 
-        assertEquals("<p>para1</p><p>para2</p><p>para3</p>", tree.innerHTML)
+        assertEquals("<p>para1</p><p>para2</p><p>para3</p>", tree.innerHTML.toString())
     }
 }

@@ -147,58 +147,56 @@ import kotlinx.html.U
 import kotlinx.html.UL
 import kotlinx.html.VAR
 import kotlinx.html.VIDEO
-import org.w3c.dom.Element
-import org.w3c.dom.HTMLAnchorElement
-import org.w3c.dom.HTMLAreaElement
-import org.w3c.dom.HTMLAudioElement
-import org.w3c.dom.HTMLBRElement
-import org.w3c.dom.HTMLBaseElement
-import org.w3c.dom.HTMLBodyElement
-import org.w3c.dom.HTMLButtonElement
-import org.w3c.dom.HTMLCanvasElement
-import org.w3c.dom.HTMLDataListElement
-import org.w3c.dom.HTMLDetailsElement
-import org.w3c.dom.HTMLDialogElement
-import org.w3c.dom.HTMLDivElement
-import org.w3c.dom.HTMLEmbedElement
-import org.w3c.dom.HTMLFieldSetElement
-import org.w3c.dom.HTMLFormElement
-import org.w3c.dom.HTMLHRElement
-import org.w3c.dom.HTMLHeadElement
-import org.w3c.dom.HTMLHeadingElement
-import org.w3c.dom.HTMLHtmlElement
-import org.w3c.dom.HTMLImageElement
-import org.w3c.dom.HTMLInputElement
-import org.w3c.dom.HTMLLIElement
-import org.w3c.dom.HTMLLabelElement
-import org.w3c.dom.HTMLLegendElement
-import org.w3c.dom.HTMLLinkElement
-import org.w3c.dom.HTMLMapElement
-import org.w3c.dom.HTMLMetaElement
-import org.w3c.dom.HTMLMeterElement
-import org.w3c.dom.HTMLOptGroupElement
-import org.w3c.dom.HTMLOptionElement
-import org.w3c.dom.HTMLOutputElement
-import org.w3c.dom.HTMLParagraphElement
-import org.w3c.dom.HTMLParamElement
-import org.w3c.dom.HTMLPictureElement
-import org.w3c.dom.HTMLPreElement
-import org.w3c.dom.HTMLProgressElement
-import org.w3c.dom.HTMLScriptElement
-import org.w3c.dom.HTMLSelectElement
-import org.w3c.dom.HTMLSourceElement
-import org.w3c.dom.HTMLSpanElement
-import org.w3c.dom.HTMLStyleElement
-import org.w3c.dom.HTMLTableCellElement
-import org.w3c.dom.HTMLTableColElement
-import org.w3c.dom.HTMLTableElement
-import org.w3c.dom.HTMLTableRowElement
-import org.w3c.dom.HTMLTableSectionElement
-import org.w3c.dom.HTMLTemplateElement
-import org.w3c.dom.HTMLTextAreaElement
-import org.w3c.dom.HTMLTimeElement
-import org.w3c.dom.HTMLTitleElement
-import org.w3c.dom.HTMLVideoElement
+import web.dom.Element
+import web.html.HTMLAnchorElement
+import web.html.HTMLAreaElement
+import web.html.HTMLAudioElement
+import web.html.HTMLBRElement
+import web.html.HTMLBaseElement
+import web.html.HTMLBodyElement
+import web.html.HTMLButtonElement
+import web.html.HTMLCanvasElement
+import web.html.HTMLDataListElement
+import web.html.HTMLDetailsElement
+import web.html.HTMLDialogElement
+import web.html.HTMLDivElement
+import web.html.HTMLEmbedElement
+import web.html.HTMLFieldSetElement
+import web.html.HTMLFormElement
+import web.html.HTMLHRElement
+import web.html.HTMLHeadElement
+import web.html.HTMLHeadingElement
+import web.html.HTMLHtmlElement
+import web.html.HTMLImageElement
+import web.html.HTMLInputElement
+import web.html.HTMLLIElement
+import web.html.HTMLLabelElement
+import web.html.HTMLLegendElement
+import web.html.HTMLLinkElement
+import web.html.HTMLMapElement
+import web.html.HTMLMetaElement
+import web.html.HTMLMeterElement
+import web.html.HTMLOptGroupElement
+import web.html.HTMLOptionElement
+import web.html.HTMLOutputElement
+import web.html.HTMLParagraphElement
+import web.html.HTMLPictureElement
+import web.html.HTMLPreElement
+import web.html.HTMLProgressElement
+import web.html.HTMLScriptElement
+import web.html.HTMLSelectElement
+import web.html.HTMLSourceElement
+import web.html.HTMLSpanElement
+import web.html.HTMLStyleElement
+import web.html.HTMLTableCellElement
+import web.html.HTMLTableColElement
+import web.html.HTMLTableElement
+import web.html.HTMLTableRowElement
+import web.html.HTMLTableSectionElement
+import web.html.HTMLTextAreaElement
+import web.html.HTMLTimeElement
+import web.html.HTMLTitleElement
+import web.html.HTMLVideoElement
 
 /**
  * Anchor
@@ -1217,10 +1215,10 @@ public inline fun TagConsumer<Element>.`param`(
   `value`: String? = null,
   classes: String? = null,
   crossinline block: PARAM.() -> Unit = {},
-): HTMLParamElement {
+): Element {
   contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
   return PARAM(attributesMapOf("name", name,"value", value,"class", classes), this)
-      .visitAndFinalize(this, block)  as HTMLParamElement
+      .visitAndFinalize(this, block) 
 }
 
 /**
@@ -1564,10 +1562,10 @@ public inline fun TagConsumer<Element>.td(classes: String? = null, crossinline b
 @HtmlTagMarker
 @OptIn(ExperimentalContracts::class)
 public inline fun TagConsumer<Element>.template(classes: String? = null, crossinline
-    block: TEMPLATE.() -> Unit = {}): HTMLTemplateElement {
+    block: TEMPLATE.() -> Unit = {}): Element {
   contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
   return TEMPLATE(attributesMapOf("class", classes), this)
-      .visitAndFinalize(this, block)  as HTMLTemplateElement
+      .visitAndFinalize(this, block) 
 }
 
 /**

@@ -2,26 +2,28 @@ import kotlinx.html.*
 import kotlinx.html.dom.*
 import kotlinx.html.injector.*
 import kotlinx.html.js.*
-import org.w3c.dom.*
-import kotlinx.browser.*
+import web.dom.Element
+import web.html.HTMLDivElement
+import web.html.HTMLParagraphElement
+import web.dom.document
 import kotlin.properties.*
 import kotlin.test.*
 
 class MyBeanWithDiv {
-    var node: HTMLDivElement by Delegates.notNull()
+    var node: Element by Delegates.notNull()
 }
 
 class MyBeanWithP {
-    var p: HTMLParagraphElement by Delegates.notNull()
+    var p: Element by Delegates.notNull()
 }
 
 class ExampleBean {
-    var myDiv: HTMLDivElement by Delegates.notNull()
-    var myP: HTMLParagraphElement by Delegates.notNull()
+    var myDiv: Element by Delegates.notNull()
+    var myP: Element by Delegates.notNull()
 }
 
 class InjectToLateInitVarBean {
-    lateinit var myP: HTMLParagraphElement
+    lateinit var myP: Element
 }
 
 class InjectorTests {
@@ -33,10 +35,8 @@ class InjectorTests {
             classes = setOf("my-class")
         }
 
-        val found: HTMLDivElement = node
-
         assertEquals("DIV", bean.node.tagName)
-        assertEquals(found, bean.node)
+        assertEquals(node, bean.node)
     }
 
     @Test fun injectByClassFailed() {

@@ -218,9 +218,12 @@ fun getTagResultClass(tag: TagInfo): String? =
         .map { "HTML${it}Element" }
         .firstOrNull { it in knownTagClasses }
 
-fun tagConsumerJs(parameter: String): TypeName =
-    ClassName("kotlinx.html", "TagConsumer")
-        .parameterizedBy(ClassName("org.w3c.dom", parameter))
+fun tagConsumerJs(parameter: String): TypeName {
+    // Element is in web.dom, HTMLElement types are in web.html
+    val pkg = if (parameter == "Element") "web.dom" else "web.html"
+    return ClassName("kotlinx.html", "TagConsumer")
+        .parameterizedBy(ClassName(pkg, parameter))
+}
 
 fun tagConsumer(parameter: TypeName): TypeName =
     ClassName("kotlinx.html", "TagConsumer")
@@ -257,9 +260,12 @@ fun consumerBuilderJsPoet(
     val cast = if (tagResultClass != null) " as $tagResultClass" else ""
     val tagClass = ClassName("kotlinx.html", tag.className)
     val tagBuilderCouldBeInline = tagBuilderCouldBeInline(tag, blockOrContent)
+    // Element is in web.dom, HTMLElement types are in web.html
+    val returnType = tagResultClass ?: defaultTagConsumer
+    val returnPackage = if (returnType == "Element") "web.dom" else "web.html"
     return FunSpec
         .builder(tag.memberName)
-        .returns(ClassName("org.w3c.dom", tagResultClass ?: defaultTagConsumer))
+        .returns(ClassName(returnPackage, returnType))
         .addModifiers(KModifier.PUBLIC)
         .receiver(tagConsumerJs(defaultTagConsumer))
         .addKdoc(tag)

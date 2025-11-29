@@ -153,7 +153,6 @@ HTMLModElement
 HTMLIFrameElement
 HTMLEmbedElement
 HTMLObjectElement
-HTMLParamElement
 HTMLVideoElement
 HTMLAudioElement
 HTMLSourceElement
@@ -189,7 +188,6 @@ HTMLMenuElement
 HTMLMenuItemElement
 HTMLDialogElement
 HTMLScriptElement
-HTMLTemplateElement
 HTMLCanvasElement
 HTMLAppletElement
 HTMLMarqueeElement
@@ -220,7 +218,6 @@ HTMLMetaElement
 HTMLObjectElement
 HTMLOListElement
 HTMLParagraphElement
-HTMLParamElement
 HTMLPreElement
 HTMLScriptElement
 HTMLTableElement
@@ -261,7 +258,6 @@ HTMLImageElement
 HTMLIFrameElement
 HTMLEmbedElement
 HTMLObjectElement
-HTMLParamElement
 HTMLVideoElement
 HTMLAudioElement
 HTMLSourceElement
@@ -297,7 +293,6 @@ HTMLMenuElement
 HTMLMenuItemElement
 HTMLDialogElement
 HTMLScriptElement
-HTMLTemplateElement
 HTMLCanvasElement
 HTMLAppletElement
 HTMLMarqueeElement
@@ -328,7 +323,6 @@ HTMLMetaElement
 HTMLObjectElement
 HTMLOListElement
 HTMLParagraphElement
-HTMLParamElement
 HTMLPreElement
 HTMLScriptElement
 HTMLTableElement
