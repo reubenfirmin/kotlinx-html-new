@@ -51,12 +51,13 @@ fun generate(pkg: String, todir: String, jsdir: String, wasmJsDir: String) {
     generateConsumerTags(repository, "$jsdir/gen-consumer-tags-js.kt", "$pkg.js") { tag, blockOrContent ->
         consumerBuilderJsPoet(tag, blockOrContent, "HTMLElement")
     }
-    generateEventAttrs(repository, "$jsdir/gen-event-attrs-js.kt", "$pkg.js")
+    generateEventAttrs(repository, "$jsdir/gen-event-attrs-js.kt", "$pkg.js", shouldUnsafeCast = true)
 
     generateConsumerTags(repository, "$wasmJsDir/gen-consumer-tags-wasm-js.kt", "$pkg.js") { tag, blockOrContent ->
         consumerBuilderJsPoet(tag, blockOrContent, "Element")
     }
-    generateEventAttrs(repository, "$wasmJsDir/gen-event-attrs-wasm-js.kt", "$pkg.js")
+    // WasmJS doesn't support unsafeCast on lambdas (they're not JsAny), so use generic Event type
+    generateEventAttrs(repository, "$wasmJsDir/gen-event-attrs-wasm-js.kt", "$pkg.js", shouldUnsafeCast = false, useTypedEvents = false)
 
     FileOutputStream("$todir/gen-enums.kt").writer(Charsets.UTF_8).use {
         it.with {
@@ -306,7 +307,7 @@ private fun generateConsumerTags(
     }
 }
 
-private fun generateEventAttrs(repository: Repository, file: String, pkg: String) {
+private fun generateEventAttrs(repository: Repository, file: String, pkg: String, shouldUnsafeCast: Boolean, useTypedEvents: Boolean = true) {
     val isEventAttribute = { attributeName: String -> attributeName.startsWith("on") }
     val properties = sequence {
         repository
@@ -316,7 +317,7 @@ private fun generateEventAttrs(repository: Repository, file: String, pkg: String
                 facade.value.attributes.filter { it.name.startsWith("on") }.forEach {
                     val parent = ClassName("kotlinx.html", facade.value.className)
 
-                    yield(eventProperty(parent, it, shouldUnsafeCast = false))
+                    yield(eventProperty(parent, it, shouldUnsafeCast, useTypedEvents))
                 }
             }
     }

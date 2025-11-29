@@ -28,6 +28,11 @@ class JSDOMBuilder<out R : HTMLElement>(val document: Document) : TagConsumer<R>
     private val path = arrayListOf<HTMLElement>()
     private var lastLeaved: HTMLElement? = null
 
+    /**
+     * Returns the current element being built, or null if not inside a tag.
+     */
+    fun currentElement(): HTMLElement? = path.lastOrNull()
+
     override fun onTagStart(tag: Tag) {
         val element: HTMLElement = when {
             tag.namespace != null -> document.createElementNS(tag.namespace!!, tag.tagName).asDynamic()

@@ -7,772 +7,779 @@ package kotlinx.html.js
 import kotlin.Unit
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.CommonEventsGroupFacade
+import web.dnd.DragEvent
 import web.events.Event
+import web.focus.FocusEvent
+import web.input.InputEvent
+import web.keyboard.KeyboardEvent
+import web.mouse.MouseEvent
+import web.mouse.WheelEvent
+import web.touch.TouchEvent
 
 public var CommonAttributeGroupFacade.onAbortFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onAbort")
   set(newValue) {
-    consumer.onTagEvent(this, "onabort", newValue)
+    consumer.onTagEvent(this, "onabort", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onBlurFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onBlurFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onBlur")
   set(newValue) {
-    consumer.onTagEvent(this, "onblur", newValue)
+    consumer.onTagEvent(this, "onblur", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onCanPlayFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onCanPlay")
   set(newValue) {
-    consumer.onTagEvent(this, "oncanplay", newValue)
+    consumer.onTagEvent(this, "oncanplay", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onCanPlayThroughFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onCanPlayThrough")
   set(newValue) {
-    consumer.onTagEvent(this, "oncanplaythrough", newValue)
+    consumer.onTagEvent(this, "oncanplaythrough", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onchange", newValue)
+    consumer.onTagEvent(this, "onchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onClickFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onClickFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onClick")
   set(newValue) {
-    consumer.onTagEvent(this, "onclick", newValue)
+    consumer.onTagEvent(this, "onclick", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onContextMenuFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onContextMenuFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onContextMenu")
   set(newValue) {
-    consumer.onTagEvent(this, "oncontextmenu", newValue)
+    consumer.onTagEvent(this, "oncontextmenu", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDoubleClickFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDoubleClickFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDoubleClick")
   set(newValue) {
-    consumer.onTagEvent(this, "ondblclick", newValue)
+    consumer.onTagEvent(this, "ondblclick", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDrag")
   set(newValue) {
-    consumer.onTagEvent(this, "ondrag", newValue)
+    consumer.onTagEvent(this, "ondrag", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragEndFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragEndFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragEnd")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragend", newValue)
+    consumer.onTagEvent(this, "ondragend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragEnterFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragEnterFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragEnter")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragenter", newValue)
+    consumer.onTagEvent(this, "ondragenter", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragLeaveFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragLeaveFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragLeave")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragleave", newValue)
+    consumer.onTagEvent(this, "ondragleave", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragOverFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragOverFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragOver")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragover", newValue)
+    consumer.onTagEvent(this, "ondragover", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDragStartFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDragStartFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragStart")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragstart", newValue)
+    consumer.onTagEvent(this, "ondragstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onDropFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onDropFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDrop")
   set(newValue) {
-    consumer.onTagEvent(this, "ondrop", newValue)
+    consumer.onTagEvent(this, "ondrop", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onDurationChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDurationChange")
   set(newValue) {
-    consumer.onTagEvent(this, "ondurationchange", newValue)
+    consumer.onTagEvent(this, "ondurationchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onEmptiedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onEmptied")
   set(newValue) {
-    consumer.onTagEvent(this, "onemptied", newValue)
+    consumer.onTagEvent(this, "onemptied", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onEndedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onEnded")
   set(newValue) {
-    consumer.onTagEvent(this, "onended", newValue)
+    consumer.onTagEvent(this, "onended", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onErrorFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onError")
   set(newValue) {
-    consumer.onTagEvent(this, "onerror", newValue)
+    consumer.onTagEvent(this, "onerror", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onFocusFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onFocusFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocus")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocus", newValue)
+    consumer.onTagEvent(this, "onfocus", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onFocusInFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onFocusInFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocusIn")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocusin", newValue)
+    consumer.onTagEvent(this, "onfocusin", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onFocusOutFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onFocusOutFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocusOut")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocusout", newValue)
+    consumer.onTagEvent(this, "onfocusout", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onFormChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFormChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onformchange", newValue)
+    consumer.onTagEvent(this, "onformchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onFormInputFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFormInput")
   set(newValue) {
-    consumer.onTagEvent(this, "onforminput", newValue)
+    consumer.onTagEvent(this, "onforminput", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onInputFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onInputFunction: (InputEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onInput")
   set(newValue) {
-    consumer.onTagEvent(this, "oninput", newValue)
+    consumer.onTagEvent(this, "oninput", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onInvalidFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onInvalid")
   set(newValue) {
-    consumer.onTagEvent(this, "oninvalid", newValue)
+    consumer.onTagEvent(this, "oninvalid", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onKeyDownFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onKeyDownFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyDown")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeydown", newValue)
+    consumer.onTagEvent(this, "onkeydown", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onKeyPressFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onKeyPressFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyPress")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeypress", newValue)
+    consumer.onTagEvent(this, "onkeypress", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onKeyUpFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onKeyUpFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyUp")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeyup", newValue)
+    consumer.onTagEvent(this, "onkeyup", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onLoadFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoad")
   set(newValue) {
-    consumer.onTagEvent(this, "onload", newValue)
+    consumer.onTagEvent(this, "onload", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onLoadedDataFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadedData")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadeddata", newValue)
+    consumer.onTagEvent(this, "onloadeddata", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onLoadedMetaDataFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadedMetaData")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadedmetadata", newValue)
+    consumer.onTagEvent(this, "onloadedmetadata", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onLoadStartFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadStart")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadstart", newValue)
+    consumer.onTagEvent(this, "onloadstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseDownFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseDownFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseDown")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousedown", newValue)
+    consumer.onTagEvent(this, "onmousedown", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseEnterFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseEnterFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseEnter")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseenter", newValue)
+    consumer.onTagEvent(this, "onmouseenter", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseLeaveFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseLeaveFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseLeave")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseleave", newValue)
+    consumer.onTagEvent(this, "onmouseleave", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseMoveFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseMoveFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseMove")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousemove", newValue)
+    consumer.onTagEvent(this, "onmousemove", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseOutFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseOutFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseOut")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseout", newValue)
+    consumer.onTagEvent(this, "onmouseout", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseOverFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseOverFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseOver")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseover", newValue)
+    consumer.onTagEvent(this, "onmouseover", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onMouseUpFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onMouseUpFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseUp")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseup", newValue)
+    consumer.onTagEvent(this, "onmouseup", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onMouseWheelFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseWheel")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousewheel", newValue)
+    consumer.onTagEvent(this, "onmousewheel", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onPauseFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPause")
   set(newValue) {
-    consumer.onTagEvent(this, "onpause", newValue)
+    consumer.onTagEvent(this, "onpause", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onPlayFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPlay")
   set(newValue) {
-    consumer.onTagEvent(this, "onplay", newValue)
+    consumer.onTagEvent(this, "onplay", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onPlayingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPlaying")
   set(newValue) {
-    consumer.onTagEvent(this, "onplaying", newValue)
+    consumer.onTagEvent(this, "onplaying", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onProgressFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onProgress")
   set(newValue) {
-    consumer.onTagEvent(this, "onprogress", newValue)
+    consumer.onTagEvent(this, "onprogress", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onRateChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onRateChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onratechange", newValue)
+    consumer.onTagEvent(this, "onratechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onReadyStateChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onReadyStateChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onreadystatechange", newValue)
+    consumer.onTagEvent(this, "onreadystatechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onScrollFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onScroll")
   set(newValue) {
-    consumer.onTagEvent(this, "onscroll", newValue)
+    consumer.onTagEvent(this, "onscroll", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSearchFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSearch")
   set(newValue) {
-    consumer.onTagEvent(this, "onsearch", newValue)
+    consumer.onTagEvent(this, "onsearch", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSeekedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSeeked")
   set(newValue) {
-    consumer.onTagEvent(this, "onseeked", newValue)
+    consumer.onTagEvent(this, "onseeked", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSeekingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSeeking")
   set(newValue) {
-    consumer.onTagEvent(this, "onseeking", newValue)
+    consumer.onTagEvent(this, "onseeking", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSelectFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSelect")
   set(newValue) {
-    consumer.onTagEvent(this, "onselect", newValue)
+    consumer.onTagEvent(this, "onselect", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onShowFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onShow")
   set(newValue) {
-    consumer.onTagEvent(this, "onshow", newValue)
+    consumer.onTagEvent(this, "onshow", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onStalledFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onStalled")
   set(newValue) {
-    consumer.onTagEvent(this, "onstalled", newValue)
+    consumer.onTagEvent(this, "onstalled", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSubmitFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSubmit")
   set(newValue) {
-    consumer.onTagEvent(this, "onsubmit", newValue)
+    consumer.onTagEvent(this, "onsubmit", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onSuspendFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSuspend")
   set(newValue) {
-    consumer.onTagEvent(this, "onsuspend", newValue)
+    consumer.onTagEvent(this, "onsuspend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onTimeUpdateFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTimeUpdate")
   set(newValue) {
-    consumer.onTagEvent(this, "ontimeupdate", newValue)
+    consumer.onTagEvent(this, "ontimeupdate", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onTouchCancelFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onTouchCancelFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchCancel")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchcancel", newValue)
+    consumer.onTagEvent(this, "ontouchcancel", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onTouchEndFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onTouchEndFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchEnd")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchend", newValue)
+    consumer.onTagEvent(this, "ontouchend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onTouchMoveFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onTouchMoveFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchMove")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchmove", newValue)
+    consumer.onTagEvent(this, "ontouchmove", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onTouchStartFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onTouchStartFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchStart")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchstart", newValue)
+    consumer.onTagEvent(this, "ontouchstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onVolumeChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onVolumeChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onvolumechange", newValue)
+    consumer.onTagEvent(this, "onvolumechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonAttributeGroupFacade.onWaitingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onWaiting")
   set(newValue) {
-    consumer.onTagEvent(this, "onwaiting", newValue)
+    consumer.onTagEvent(this, "onwaiting", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonAttributeGroupFacade.onWheelFunction: (Event) -> Unit
+public var CommonAttributeGroupFacade.onWheelFunction: (WheelEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onWheel")
   set(newValue) {
-    consumer.onTagEvent(this, "onwheel", newValue)
+    consumer.onTagEvent(this, "onwheel", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onAbortFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onAbort")
   set(newValue) {
-    consumer.onTagEvent(this, "onabort", newValue)
+    consumer.onTagEvent(this, "onabort", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onBlurFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onBlurFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onBlur")
   set(newValue) {
-    consumer.onTagEvent(this, "onblur", newValue)
+    consumer.onTagEvent(this, "onblur", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onCanPlayFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onCanPlay")
   set(newValue) {
-    consumer.onTagEvent(this, "oncanplay", newValue)
+    consumer.onTagEvent(this, "oncanplay", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onCanPlayThroughFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onCanPlayThrough")
   set(newValue) {
-    consumer.onTagEvent(this, "oncanplaythrough", newValue)
+    consumer.onTagEvent(this, "oncanplaythrough", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onchange", newValue)
+    consumer.onTagEvent(this, "onchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onClickFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onClickFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onClick")
   set(newValue) {
-    consumer.onTagEvent(this, "onclick", newValue)
+    consumer.onTagEvent(this, "onclick", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onContextMenuFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onContextMenuFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onContextMenu")
   set(newValue) {
-    consumer.onTagEvent(this, "oncontextmenu", newValue)
+    consumer.onTagEvent(this, "oncontextmenu", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDoubleClickFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDoubleClickFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDoubleClick")
   set(newValue) {
-    consumer.onTagEvent(this, "ondblclick", newValue)
+    consumer.onTagEvent(this, "ondblclick", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDrag")
   set(newValue) {
-    consumer.onTagEvent(this, "ondrag", newValue)
+    consumer.onTagEvent(this, "ondrag", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragEndFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragEndFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragEnd")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragend", newValue)
+    consumer.onTagEvent(this, "ondragend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragEnterFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragEnterFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragEnter")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragenter", newValue)
+    consumer.onTagEvent(this, "ondragenter", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragLeaveFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragLeaveFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragLeave")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragleave", newValue)
+    consumer.onTagEvent(this, "ondragleave", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragOverFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragOverFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragOver")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragover", newValue)
+    consumer.onTagEvent(this, "ondragover", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDragStartFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDragStartFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDragStart")
   set(newValue) {
-    consumer.onTagEvent(this, "ondragstart", newValue)
+    consumer.onTagEvent(this, "ondragstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onDropFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onDropFunction: (DragEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDrop")
   set(newValue) {
-    consumer.onTagEvent(this, "ondrop", newValue)
+    consumer.onTagEvent(this, "ondrop", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onDurationChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onDurationChange")
   set(newValue) {
-    consumer.onTagEvent(this, "ondurationchange", newValue)
+    consumer.onTagEvent(this, "ondurationchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onEmptiedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onEmptied")
   set(newValue) {
-    consumer.onTagEvent(this, "onemptied", newValue)
+    consumer.onTagEvent(this, "onemptied", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onEndedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onEnded")
   set(newValue) {
-    consumer.onTagEvent(this, "onended", newValue)
+    consumer.onTagEvent(this, "onended", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onErrorFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onError")
   set(newValue) {
-    consumer.onTagEvent(this, "onerror", newValue)
+    consumer.onTagEvent(this, "onerror", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onFocusFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onFocusFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocus")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocus", newValue)
+    consumer.onTagEvent(this, "onfocus", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onFocusInFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onFocusInFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocusIn")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocusin", newValue)
+    consumer.onTagEvent(this, "onfocusin", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onFocusOutFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onFocusOutFunction: (FocusEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFocusOut")
   set(newValue) {
-    consumer.onTagEvent(this, "onfocusout", newValue)
+    consumer.onTagEvent(this, "onfocusout", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onFormChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFormChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onformchange", newValue)
+    consumer.onTagEvent(this, "onformchange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onFormInputFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onFormInput")
   set(newValue) {
-    consumer.onTagEvent(this, "onforminput", newValue)
+    consumer.onTagEvent(this, "onforminput", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onInputFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onInputFunction: (InputEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onInput")
   set(newValue) {
-    consumer.onTagEvent(this, "oninput", newValue)
+    consumer.onTagEvent(this, "oninput", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onInvalidFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onInvalid")
   set(newValue) {
-    consumer.onTagEvent(this, "oninvalid", newValue)
+    consumer.onTagEvent(this, "oninvalid", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onKeyDownFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onKeyDownFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyDown")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeydown", newValue)
+    consumer.onTagEvent(this, "onkeydown", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onKeyPressFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onKeyPressFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyPress")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeypress", newValue)
+    consumer.onTagEvent(this, "onkeypress", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onKeyUpFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onKeyUpFunction: (KeyboardEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onKeyUp")
   set(newValue) {
-    consumer.onTagEvent(this, "onkeyup", newValue)
+    consumer.onTagEvent(this, "onkeyup", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onLoadFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoad")
   set(newValue) {
-    consumer.onTagEvent(this, "onload", newValue)
+    consumer.onTagEvent(this, "onload", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onLoadedDataFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadedData")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadeddata", newValue)
+    consumer.onTagEvent(this, "onloadeddata", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onLoadedMetaDataFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadedMetaData")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadedmetadata", newValue)
+    consumer.onTagEvent(this, "onloadedmetadata", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onLoadStartFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onLoadStart")
   set(newValue) {
-    consumer.onTagEvent(this, "onloadstart", newValue)
+    consumer.onTagEvent(this, "onloadstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseDownFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseDownFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseDown")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousedown", newValue)
+    consumer.onTagEvent(this, "onmousedown", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseEnterFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseEnterFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseEnter")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseenter", newValue)
+    consumer.onTagEvent(this, "onmouseenter", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseLeaveFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseLeaveFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseLeave")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseleave", newValue)
+    consumer.onTagEvent(this, "onmouseleave", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseMoveFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseMoveFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseMove")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousemove", newValue)
+    consumer.onTagEvent(this, "onmousemove", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseOutFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseOutFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseOut")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseout", newValue)
+    consumer.onTagEvent(this, "onmouseout", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseOverFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseOverFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseOver")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseover", newValue)
+    consumer.onTagEvent(this, "onmouseover", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onMouseUpFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onMouseUpFunction: (MouseEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseUp")
   set(newValue) {
-    consumer.onTagEvent(this, "onmouseup", newValue)
+    consumer.onTagEvent(this, "onmouseup", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onMouseWheelFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onMouseWheel")
   set(newValue) {
-    consumer.onTagEvent(this, "onmousewheel", newValue)
+    consumer.onTagEvent(this, "onmousewheel", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onPauseFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPause")
   set(newValue) {
-    consumer.onTagEvent(this, "onpause", newValue)
+    consumer.onTagEvent(this, "onpause", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onPlayFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPlay")
   set(newValue) {
-    consumer.onTagEvent(this, "onplay", newValue)
+    consumer.onTagEvent(this, "onplay", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onPlayingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onPlaying")
   set(newValue) {
-    consumer.onTagEvent(this, "onplaying", newValue)
+    consumer.onTagEvent(this, "onplaying", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onProgressFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onProgress")
   set(newValue) {
-    consumer.onTagEvent(this, "onprogress", newValue)
+    consumer.onTagEvent(this, "onprogress", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onRateChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onRateChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onratechange", newValue)
+    consumer.onTagEvent(this, "onratechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onReadyStateChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onReadyStateChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onreadystatechange", newValue)
+    consumer.onTagEvent(this, "onreadystatechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onScrollFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onScroll")
   set(newValue) {
-    consumer.onTagEvent(this, "onscroll", newValue)
+    consumer.onTagEvent(this, "onscroll", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSearchFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSearch")
   set(newValue) {
-    consumer.onTagEvent(this, "onsearch", newValue)
+    consumer.onTagEvent(this, "onsearch", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSeekedFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSeeked")
   set(newValue) {
-    consumer.onTagEvent(this, "onseeked", newValue)
+    consumer.onTagEvent(this, "onseeked", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSeekingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSeeking")
   set(newValue) {
-    consumer.onTagEvent(this, "onseeking", newValue)
+    consumer.onTagEvent(this, "onseeking", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSelectFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSelect")
   set(newValue) {
-    consumer.onTagEvent(this, "onselect", newValue)
+    consumer.onTagEvent(this, "onselect", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onShowFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onShow")
   set(newValue) {
-    consumer.onTagEvent(this, "onshow", newValue)
+    consumer.onTagEvent(this, "onshow", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onStalledFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onStalled")
   set(newValue) {
-    consumer.onTagEvent(this, "onstalled", newValue)
+    consumer.onTagEvent(this, "onstalled", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSubmitFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSubmit")
   set(newValue) {
-    consumer.onTagEvent(this, "onsubmit", newValue)
+    consumer.onTagEvent(this, "onsubmit", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onSuspendFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onSuspend")
   set(newValue) {
-    consumer.onTagEvent(this, "onsuspend", newValue)
+    consumer.onTagEvent(this, "onsuspend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onTimeUpdateFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTimeUpdate")
   set(newValue) {
-    consumer.onTagEvent(this, "ontimeupdate", newValue)
+    consumer.onTagEvent(this, "ontimeupdate", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onTouchCancelFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onTouchCancelFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchCancel")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchcancel", newValue)
+    consumer.onTagEvent(this, "ontouchcancel", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onTouchEndFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onTouchEndFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchEnd")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchend", newValue)
+    consumer.onTagEvent(this, "ontouchend", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onTouchMoveFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onTouchMoveFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchMove")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchmove", newValue)
+    consumer.onTagEvent(this, "ontouchmove", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onTouchStartFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onTouchStartFunction: (TouchEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onTouchStart")
   set(newValue) {
-    consumer.onTagEvent(this, "ontouchstart", newValue)
+    consumer.onTagEvent(this, "ontouchstart", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onVolumeChangeFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onVolumeChange")
   set(newValue) {
-    consumer.onTagEvent(this, "onvolumechange", newValue)
+    consumer.onTagEvent(this, "onvolumechange", newValue.unsafeCast<(Event) -> Unit>())
   }
 
 public var CommonEventsGroupFacade.onWaitingFunction: (Event) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onWaiting")
   set(newValue) {
-    consumer.onTagEvent(this, "onwaiting", newValue)
+    consumer.onTagEvent(this, "onwaiting", newValue.unsafeCast<(Event) -> Unit>())
   }
 
-public var CommonEventsGroupFacade.onWheelFunction: (Event) -> Unit
+public var CommonEventsGroupFacade.onWheelFunction: (WheelEvent) -> Unit
   get() = throw UnsupportedOperationException("You can't read variable onWheel")
   set(newValue) {
-    consumer.onTagEvent(this, "onwheel", newValue)
+    consumer.onTagEvent(this, "onwheel", newValue.unsafeCast<(Event) -> Unit>())
   }
