@@ -5,6 +5,14 @@
 
 # kotlinx.html
 
+Updated fork of [Kotlinx.html](https://github.com/Kotlin/kotlinx.html).
+
+- Migrated JS and wasmJs targets from `org.w3c.dom` to kotlin-wrappers (`web.dom`, `web.html`, `web.events`)
+- Typed event handlers for JS target (e.g. `MouseEvent`, `KeyboardEvent`, `FocusEvent`) using `unsafeCast`; wasmJs remains on generic `Event` due to lambda casting limitations
+- Replaced innerHTML JS interop hacks with proper DOM APIs (`insertAdjacentHTML`, `asDynamic()`)
+- Exposed `kotlin-js` and `kotlin-browser` as API dependencies (required since typed event handler signatures reference kotlin-wrappers types)
+- Upgraded to Gradle 9.1.0 and kotlin-wrappers BOM 2025.11.12
+
 The kotlinx.html library provides a DSL
 to build HTML
 to [Writer](https://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)/[Appendable](https://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html)
