@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
  * -PversionTag - works together with "branch-build" profile and overrides "-SNAPSHOT" suffix of the version.
  */
 plugins {
-    kotlin("multiplatform") version "2.2.21"
+    kotlin("multiplatform") version "2.4.0"
     id("maven-publish")
     id("signing")
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.13.2"
@@ -176,15 +176,15 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                api("org.jetbrains.kotlin-wrappers:kotlin-js:2025.11.12")
-                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-js:2026.6.2")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.6.2")
             }
         }
 
         val wasmJsMain by getting {
             dependencies {
-                api("org.jetbrains.kotlin-wrappers:kotlin-js:2025.11.12")
-                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2025.11.12")
+                api("org.jetbrains.kotlin-wrappers:kotlin-js:2026.6.2")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.6.2")
             }
         }
     }
