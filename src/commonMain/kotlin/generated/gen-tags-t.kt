@@ -82,7 +82,7 @@ inline fun TABLE.tr(classes : String? = null, crossinline block : TR.() -> Unit 
 
 
 @Suppress("unused")
-open class TBODY(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tbody", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
+open class TBODY(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tbody", consumer, initialAttributes, null, false, false), HtmlBlockTag {
 
 }
 /**
@@ -187,7 +187,7 @@ val TEXTAREA.asPhrasingContent : PhrasingContent
 
 
 @Suppress("unused")
-open class TFOOT(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tfoot", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
+open class TFOOT(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tfoot", consumer, initialAttributes, null, false, false), HtmlBlockTag {
 
 }
 /**
@@ -223,7 +223,7 @@ open class TH(initialAttributes : Map<String, String>, override val consumer : T
 }
 
 @Suppress("unused")
-open class THEAD(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("thead", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
+open class THEAD(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("thead", consumer, initialAttributes, null, false, false), HtmlBlockTag {
 
 }
 /**
@@ -258,7 +258,7 @@ open class TITLE(initialAttributes : Map<String, String>, override val consumer 
 }
 
 @Suppress("unused")
-open class TR(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tr", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
+open class TR(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tr", consumer, initialAttributes, null, false, false), HtmlBlockTag {
 
 }
 /**

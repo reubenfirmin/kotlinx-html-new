@@ -313,6 +313,10 @@
             <xsd:element ref="svg"/>
 
             <xsd:element ref="table"/>
+            <xsd:element ref="tbody"/>
+            <xsd:element ref="thead"/>
+            <xsd:element ref="tfoot"/>
+            <xsd:element ref="tr"/>
             <xsd:element ref="textarea"/>
             <xsd:element ref="time"/>
 
