@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "org.jetbrains.kotlinx"
-version = "0.12.0-web"
+version = "0.12.1-web"
 
 /**
  * If "release" profile is used the "-SNAPSHOT" suffix of the version is removed.
