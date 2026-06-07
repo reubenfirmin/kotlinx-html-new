@@ -234,6 +234,46 @@ inline fun FlowContent.table(classes : String? = null, crossinline block : TABLE
 }
 
 /**
+ * Table body
+ */
+@HtmlTagMarker
+@OptIn(ExperimentalContracts::class)
+inline fun FlowContent.tbody(classes : String? = null, crossinline block : TBODY.() -> Unit = {}) : Unit {
+    contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
+    TBODY(attributesMapOf("class", classes), consumer).visit(block)
+}
+
+/**
+ * Table header
+ */
+@HtmlTagMarker
+@OptIn(ExperimentalContracts::class)
+inline fun FlowContent.thead(classes : String? = null, crossinline block : THEAD.() -> Unit = {}) : Unit {
+    contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
+    THEAD(attributesMapOf("class", classes), consumer).visit(block)
+}
+
+/**
+ * Table footer
+ */
+@HtmlTagMarker
+@OptIn(ExperimentalContracts::class)
+inline fun FlowContent.tfoot(classes : String? = null, crossinline block : TFOOT.() -> Unit = {}) : Unit {
+    contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
+    TFOOT(attributesMapOf("class", classes), consumer).visit(block)
+}
+
+/**
+ * Table row
+ */
+@HtmlTagMarker
+@OptIn(ExperimentalContracts::class)
+inline fun FlowContent.tr(classes : String? = null, crossinline block : TR.() -> Unit = {}) : Unit {
+    contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
+    TR(attributesMapOf("class", classes), consumer).visit(block)
+}
+
+/**
  * Underlined text style
  */
 @HtmlTagMarker
