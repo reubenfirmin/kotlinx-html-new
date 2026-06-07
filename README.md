@@ -14,6 +14,7 @@ Updated fork of [Kotlinx.html](https://github.com/Kotlin/kotlinx.html).
 - Upgraded to Gradle 9.1.0 and kotlin-wrappers BOM 2025.11.12
 - Verified SVG elements are created in the SVG namespace on the JS target — the `Tag.namespace` mangling reported against the legacy JS backend no longer occurs on Kotlin 2.4 (IR); added a regression test guarding it — [#285](https://github.com/Kotlin/kotlinx.html/issues/285)
 - Made `<tbody>`, `<thead>`, `<tfoot>` and `<tr>` part of `FlowContent`, so table rows/sections can be generated as standalone fragments (e.g. for HTMX partial swaps) and a shared component can target `FlowContent` whether it renders inside a `<tbody>` or on its own. This intentionally relaxes strict HTML table nesting — [#283](https://github.com/Kotlin/kotlinx.html/issues/283), [#284](https://github.com/Kotlin/kotlinx.html/issues/284)
+- Relaxed the `<th>` content model to flow content (allows `<div>` and other block elements inside `<th>`), matching `<td>` and valid HTML5 — [#246](https://github.com/Kotlin/kotlinx.html/issues/246)
 
 The kotlinx.html library provides a DSL
 to build HTML
