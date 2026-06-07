@@ -12,6 +12,7 @@ Updated fork of [Kotlinx.html](https://github.com/Kotlin/kotlinx.html).
 - Replaced innerHTML JS interop hacks with proper DOM APIs (`insertAdjacentHTML`, `asDynamic()`)
 - Exposed `kotlin-js` and `kotlin-browser` as API dependencies (required since typed event handler signatures reference kotlin-wrappers types)
 - Upgraded to Gradle 9.1.0 and kotlin-wrappers BOM 2025.11.12
+- Verified SVG elements are created in the SVG namespace on the JS target — the `Tag.namespace` mangling reported against the legacy JS backend no longer occurs on Kotlin 2.4 (IR); added a regression test guarding it — [#285](https://github.com/Kotlin/kotlinx.html/issues/285)
 
 The kotlinx.html library provides a DSL
 to build HTML
