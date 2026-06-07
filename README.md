@@ -28,6 +28,41 @@ for better [Kotlin programming](https://kotlinlang.org) for Web.
 See [Getting started](https://github.com/kotlin/kotlinx.html/wiki/Getting-started) page for details how to include the
 library.
 
+# Consuming this fork (JitPack)
+
+This fork is published through [JitPack](https://jitpack.io) rather than Maven Central. Add the JitPack
+repository and depend on a release tag (see [releases](https://github.com/reubenfirmin/kotlinx-html-new/releases)
+for available versions):
+
+```kotlin
+// settings.gradle.kts (or build.gradle.kts repositories block)
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+```
+
+```kotlin
+// build.gradle.kts
+dependencies {
+    implementation("com.github.reubenfirmin:kotlinx-html-new:0.12.1-web")
+}
+```
+
+For a Kotlin Multiplatform project, add it to the relevant source set instead:
+
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation("com.github.reubenfirmin:kotlinx-html-new:0.12.1-web")
+        }
+    }
+}
+```
+
+You can also pin a specific commit instead of a tag by using the commit SHA as the version.
+
 # DOM
 
 You can build a DOM tree with JVM, JS, and WASM.
